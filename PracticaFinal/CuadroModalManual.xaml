@@ -1,0 +1,79 @@
+﻿<Window x:Class="PracticaFinal.CuadroModalManual"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Añadir Manualmente" Height="650" Width="500" ResizeMode="NoResize" Icon="Media/gear-512.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="Auto" />
+            <RowDefinition  Height="Auto" />
+            <RowDefinition  Height="Auto" />
+            <RowDefinition  Height="Auto" />
+            <RowDefinition  Height="Auto" />
+            <RowDefinition  Height="Auto" />
+            <RowDefinition />
+            <RowDefinition  Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Nombre" HorizontalAlignment="Center" Margin="0,5,0,0" />
+        <TextBox Name="Caja1" Margin="20,30,20,20" />
+
+        <Label Content="Coordenada X" Grid.Column="1" HorizontalAlignment="Center" Margin="0,5,0,0" />
+        <TextBox Name="Caja2" Margin="20,30,20,20" Grid.Column="1" ToolTip="La casilla acepta valores enteros o decimales." />
+
+        <Label Content="Coordenada Y" Grid.Column="2" HorizontalAlignment="Center" Margin="0,5,0,0" />
+        <TextBox Name="Caja3" Margin="20,30,20,20" Grid.Column="2" ToolTip="La casilla acepta valores enteros o decimales." />
+
+        <Button Name="Boton_Anadir" Content="Añadir" Margin="20" Grid.Row="1" Click="Anadir_Click" />
+        <Button Name="Boton_Modificar" Content="Modificar" ToolTip="También puedes modificar un valor pulsando ENTER en las casillas de valores" Margin="20" Grid.Row="1" Grid.Column="1" Click="Modificar_Click" IsEnabled="False" />
+        <Button Name="Boton_Eliminar" Content="Eliminar" Margin="20" Grid.Row="1" Grid.Column="2" Click="Eliminar_Click" IsEnabled="False" />
+
+        <Button Name="Boton_Subir" Margin="20" Grid.Column="3" Click="Subir_Click" Height="30" Visibility="Hidden" BorderBrush="{x:Null}" ToolTip="Permite reordenadar el valor seleccionado hacia arriba.">
+            <Button.Background>
+                <ImageBrush ImageSource="Media/ArrowUp.png" Stretch="Uniform" />
+            </Button.Background>
+        </Button>
+        <Button Name="Boton_Bajar" Margin="20" Grid.Row="1" Grid.Column="3" Click="Bajar_Click" Height="30" Visibility="Hidden" BorderBrush="{x:Null}" ToolTip="Permite reordenadar el valor seleccionado hacia abajo.">
+            <Button.Background>
+                <ImageBrush ImageSource="Media/ArrowDown.png" Stretch="Uniform" />
+            </Button.Background>
+        </Button>
+
+        <Separator Grid.Row="2" Grid.ColumnSpan="4" />
+
+        <Button Name="Boton_EliminarNombre" Content="Eliminar puntos con nombre: " Margin="20" Grid.Row="3" Grid.ColumnSpan="2" Click="EliminarNombre_Click" />
+        <TextBox Name="CajaEliminarNombre" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="20" />
+
+        <Separator Grid.Row="4" Grid.ColumnSpan="4" />
+
+        <Button Name="Boton_Aleatorio" Content="Valor Aleatorio" Margin="20" Grid.Row="5" Grid.ColumnSpan="2" Click="Aleatorio_Click" />
+
+        <Label Content="Valor min." Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" Margin="0,5,0,0" />
+        <TextBox ToolTip="Por defecto: -9.00" Name="CajaMin" Grid.Row="5" Grid.Column="2" Margin="20,30,20,20" />
+
+        <Label Content="Valor max." Grid.Row="5" Grid.Column="3" HorizontalAlignment="Center" Margin="0,5,0,0" />
+        <TextBox ToolTip="Por defecto: 9.00" Name="CajaMax" Grid.Row="5" Grid.Column="3" Margin="20,30,20,20" />
+
+        <ListView Name="listaManual" Margin="20,0,20,0" Grid.Row="6" Grid.ColumnSpan="6" SelectionChanged="lista_SelectionChanged" HorizontalContentAlignment="Center" MouseDown="lista_MouseDown">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="150" />
+                        <GridViewColumn Header="Coordenada X" DisplayMemberBinding="{Binding CorX}" Width="150" />
+                        <GridViewColumn Header="Coordenada Y" DisplayMemberBinding="{Binding CorY}" Width="150" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="Aceptar" Content="Aceptar" Click="Aceptar_Click" Grid.Row="7" Grid.Column="2" Margin="20" ToolTip="Pulse Aceptar para dibujar la figura en la ventana principal." />
+        <Button x:Name="Cancelar" Content="Cancelar" Click="Cancelar_Click"  Grid.Row="7" Grid.Column="1" Margin="20" />
+    </Grid>
+</Window>

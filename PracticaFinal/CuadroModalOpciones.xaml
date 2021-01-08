@@ -1,0 +1,71 @@
+﻿<Window x:Class="PracticaFinal.CuadroModalOpciones"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Opciones" Height="600" Width="500" ResizeMode="NoResize" Icon="Media/gear-512.ico">
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Color de los ejes:" HorizontalContentAlignment="Center" Margin="20" />
+            <xctk:ColorPicker Name="colorPickerEjes" Grid.Column="1" Margin="20" DisplayColorAndName="True" SelectedColor="Black" SelectedColorChanged="colorPickerEjes_SelectedColorChanged"  AvailableColorsSortingMode="HueSaturationBrightness" />
+
+            <Label Content="Color de la línea:" Grid.Row="1" HorizontalContentAlignment="Center" Margin="20" />
+            <xctk:ColorPicker Name="colorPickerLineas" Grid.Row="1" Grid.Column="1" Margin="20" DisplayColorAndName="True" SelectedColor="Black" SelectedColorChanged="colorPickerLineas_SelectedColorChanged"  AvailableColorsSortingMode="HueSaturationBrightness" />
+
+            <Label Content="Color del fondo:" Grid.Row="2" HorizontalContentAlignment="Center" Margin="20" />
+            <xctk:ColorPicker Name="colorPickerBackground" Grid.Row="2" Grid.Column="1" Margin="20" DisplayColorAndName="True" SelectedColor="Black" SelectedColorChanged="colorPickerBackground_SelectedColorChanged"  AvailableColorsSortingMode="HueSaturationBrightness" />
+
+            <Label Content="Grosor de los ejes:" Grid.Row="3" HorizontalContentAlignment="Center" Margin="20" />
+            <TextBox Name="selectionEjes" Grid.Row="3" Grid.Column="1" Margin="20" HorizontalContentAlignment="Center" />
+
+            <Label Content="Grosor de la línea:" Grid.Row="4" HorizontalContentAlignment="Center" Margin="20" />
+            <TextBox Name="selectionLinea" Grid.Row="4" Grid.Column="1" Margin="20" HorizontalContentAlignment="Center" />
+
+            <Label Content="Ancho del punteado de la línea:" Grid.Row="5" HorizontalContentAlignment="Center" Margin="20" />
+            <TextBox Name="dashAnchoLinea" Grid.Row="5" Grid.Column="1" Margin="20" HorizontalContentAlignment="Center" />
+
+            <Label Content="Espaciado del punteado de la línea:" Grid.Row="6" HorizontalContentAlignment="Center" Margin="20" />
+            <TextBox Name="dashEspacioLinea" Grid.Row="6" Grid.Column="1" Margin="20" HorizontalContentAlignment="Center" />
+
+            <Label Content="Forma del inicio de la línea:" Grid.Row="7" HorizontalContentAlignment="Center" Margin="20" />
+            <ComboBox Name="inicioLinea" Grid.Row="7" Grid.Column="1" Margin="20" HorizontalContentAlignment="Center" SelectionChanged="inicioLinea_SelectionChanged">
+                <ComboBoxItem Content="Ninguna"  IsSelected="True" />
+                <ComboBoxItem Content="Cuadrada" />
+                <ComboBoxItem Content="Redondeada" />
+                <ComboBoxItem Content="Triangular" />
+            </ComboBox>
+
+            <Label Content="Forma del fin de la línea:" Grid.Row="8" HorizontalContentAlignment="Center" Margin="20" />
+            <ComboBox Name="finLinea" Grid.Row="8" Grid.Column="1" Margin="20" HorizontalContentAlignment="Center" SelectionChanged="finLinea_SelectionChanged">
+                <ComboBoxItem Content="Ninguna" IsSelected="True" />
+                <ComboBoxItem Content="Cuadrada" />
+                <ComboBoxItem Content="Redondeada" />
+                <ComboBoxItem Content="Triangular" />
+            </ComboBox>
+
+            <Button ToolTip="Restablecer valores por defecto." Name="Predeterminado" Content="Predeterminado" Margin="20" Grid.Row="9" Click="Predeterminado_Click" Grid.ColumnSpan="2" />
+            <Button x:Name="Cancelar" Content="Cancelar" Click="Cancelar_Click"  Grid.Row="10" Margin="20" />
+            <Button x:Name="Aceptar" Content="Aceptar" Click="Aceptar_Click" Grid.Row="10" Grid.Column="1" Margin="20" />
+        </Grid>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,88 @@
+﻿<Window x:Class="PracticaFinal.CuadroModalTrigonometria"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Generación por Trigonometria: A * Sin(B * x + C)" Height="650" Width="500" ResizeMode="NoResize" Icon="Media/gear-512.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ComboBox HorizontalContentAlignment="Center" Margin="20" Name="tipoFuncion">
+            <ComboBoxItem Content="Seno" IsSelected="True" />
+            <ComboBoxItem Content="Coseno" />
+            <ComboBoxItem Content="Tangente" />
+        </ComboBox>
+
+        <Label Content="Nombre" Grid.Column="1" HorizontalContentAlignment="Center" Margin="0,5,0,0" />
+        <TextBox Name="CajaNombre" Margin="20,30,20,20" Grid.Column="1" />
+
+        <Label Content="A" Grid.Column="2" HorizontalContentAlignment="Center" Margin="0,5,0,0" />
+        <TextBox Name="CajaA" Grid.Column="2" Margin="20,30,20,20" ToolTip="Casilla para el valor A."/>
+
+        <Label Content="B" Grid.Row="1" HorizontalContentAlignment="Center" Margin="0,5,0,0" ToolTip="Casilla para el valor B."/>
+        <TextBox Name="CajaB" Margin="20,30,20,20" Grid.Row="1" />
+
+        <Label Content="C" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Margin="0,5,0,0" />
+        <TextBox Name="CajaC" Margin="20,30,20,20" Grid.Row="1" Grid.Column="1" ToolTip="Casilla para el valor C."/>
+
+        <Button Name="Boton_Anadir" Content="Añadir" Margin="20" Grid.Column="3" Click="Anadir_Click" />
+        <Button Name="Boton_Eliminar" Content="Eliminar" Margin="20" Grid.Row="1" Grid.Column="2" Click="Eliminar_Click" IsEnabled="False" />
+
+        <Grid Grid.Row="1" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button Name="Boton_Subir" Margin="20" Height="20" Click="Subir_Click" Visibility="Hidden" BorderBrush="{x:Null}" ToolTip="Permite reordenadar el valor seleccionado hacia arriba.">
+                <Button.Background>
+                    <ImageBrush ImageSource="Media/ArrowUp.png" Stretch="Uniform" />
+                </Button.Background>
+            </Button>
+            <Button Name="Boton_Bajar" Grid.Column="1" Margin="20" Height="20" Click="Bajar_Click" Visibility="Hidden" BorderBrush="{x:Null}" ToolTip="Permite reordenadar el valor seleccionado hacia abajo.">
+                <Button.Background>
+                    <ImageBrush ImageSource="Media/ArrowDown.png" Stretch="Uniform" />
+                </Button.Background>
+            </Button>
+        </Grid>
+
+        <Separator Grid.Row="2" Grid.ColumnSpan="4" />
+
+        <Button Name="Boton_EliminarNombre" Content="Eliminar puntos con nombre: " Margin="20" Grid.Row="3" Grid.ColumnSpan="2" Click="EliminarNombre_Click" />
+        <TextBox Name="CajaEliminarNombre" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="20" />
+
+        <Button Name="Boton_Aleatorio" Content="Valores Aleatorios" Margin="20" Grid.Row="4" Grid.ColumnSpan="2" Click="Aleatorio_Click" />
+
+        <Label Content="Precisión: " Grid.Row="4" Grid.Column="2" Margin="0,5,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
+        <TextBox Name="Precision" Grid.Row="4" Grid.Column="2" Margin="20,30,20,20" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" />
+
+        <ListView Name="listaTrigonometria" Margin="20" Grid.Row="5" Grid.ColumnSpan="4" SelectionChanged="lista_SelectionChanged" MouseDown="lista_MouseDown">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="110" />
+                        <GridViewColumn Header="Coordenada X" DisplayMemberBinding="{Binding CorX}" Width="170" />
+                        <GridViewColumn Header="Coordenada Y" DisplayMemberBinding="{Binding CorY}" Width="170" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="Aceptar" Content="Aceptar" Click="Aceptar_Click" Grid.Row="6" Grid.ColumnSpan="1" Grid.Column="2" Margin="20" ToolTip="Pulse Aceptar para dibujar la figura en la ventana principal." />
+        <Button x:Name="Cancelar" Content="Cancelar" Click="Cancelar_Click"  Grid.Row="6" Grid.ColumnSpan="1" Grid.Column="1" Margin="20" />
+    </Grid>
+</Window>
