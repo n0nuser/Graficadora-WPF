@@ -580,7 +580,7 @@ namespace PracticaFinal
             var listKVP = new List<KeyValuePair<double, double>>();
             var selectedFiles = this.listaPuntos.Cast<Punto>().ToList();
             foreach (Punto item in selectedFiles)
-                listKVP.Add(new KeyValuePair<double, double>(item.CorY, item.CorX));
+                listKVP.Add(new KeyValuePair<double, double>(item.CorX, item.CorY));
             
             if (GBarras.Visibility == Visibility.Visible)
                 ((BarSeries)GBarras.Series[0]).ItemsSource = listKVP;
