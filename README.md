@@ -1,4 +1,8 @@
-# Nota final : 
+# Nota final : 9
+
+## Mejoras que se podrían hacer
+
+Utilización y creación de eventos y métodos delegado.
 
 # Enunciado general de la práctica (2020)
 
